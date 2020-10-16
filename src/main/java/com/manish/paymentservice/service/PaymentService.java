@@ -29,6 +29,7 @@ public class PaymentService {
 
     // This should be third party payment gateway
     public PAYMENT_STATUS paymentStatus() {
+
         return new Random().nextBoolean() ? PAYMENT_STATUS.SUCCESS : PAYMENT_STATUS.FAILED;
     }
 }
