@@ -1,6 +1,6 @@
 package com.manish.paymentservice.service;
 
-import com.manish.paymentservice.entity.PAYMENT_STATUS;
+import com.manish.paymentservice.entity.PaymentStatus;
 import com.manish.paymentservice.entity.Payment;
 import com.manish.paymentservice.reposiitory.PaymentRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,8 +28,15 @@ public class PaymentService {
     }
 
     // This should be third party payment gateway
-    public PAYMENT_STATUS paymentStatus() {
+    public PaymentStatus paymentStatus() {
 
-        return new Random().nextBoolean() ? PAYMENT_STATUS.SUCCESS : PAYMENT_STATUS.FAILED;
+        return new Random().nextBoolean() ? PaymentStatus.SUCCESS : PaymentStatus.FAILED;
+    }
+
+    public Payment findByOrderId(Long orderId) {
+
+        Payment payment = paymentRepository.findByOrderId(orderId);
+        log.info("Payment data for the orderId {0} is {1}", orderId, payment);
+        return payment;
     }
 }

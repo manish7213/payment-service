@@ -18,7 +18,7 @@ public class Payment {
     @GeneratedValue
     private Long paymentId;
     @Enumerated(EnumType.STRING)
-    private PAYMENT_STATUS paymentStatus;
+    private PaymentStatus paymentStatus;
     private String transactionId;
 
     private Long orderId;

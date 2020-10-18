@@ -5,10 +5,7 @@ import com.manish.paymentservice.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 
@@ -26,4 +23,9 @@ public class PaymentController {
         return new ResponseEntity(payment1, HttpStatus.CREATED);
     }
 
+    @GetMapping("/{orderId}")
+    public Payment findByOrderId(@PathVariable Long orderId) {
+
+        return paymentService.findByOrderId(orderId);
+    }
 }
